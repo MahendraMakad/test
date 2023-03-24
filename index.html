@@ -1,79 +1,71 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html lang="en">
 
 <head>
-    <title>Online blur or pixelate an area on an image - ImgTools</title>
-    <link rel="stylesheet" href="./style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Censor</title>
+  <!-- fontawesome library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- css bulma -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css"
+    integrity="sha512-HqxHUkJM0SYcbvxUw5P60SzdOTy/QVwA1JJrvaXJv4q7lmbDZCmZaqz01UPOaQveoxfYRv1tHozWGPMcuTBuvQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- jquery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
+    integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/imgareaselect/0.9.10/js/jquery.imgareaselect.min.js"
+    integrity="sha512-59swnhUs+9AinrKlTPqsoO5ukNPPFbPXFyaf41MAgiTG/fv3LBZwWQWiZNYeksneLhiUo4xjh/leTZ53sZzQ4Q=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet"
+    href="	https://cdnjs.cloudflare.com/ajax/libs/imgareaselect/1.0.0-rc.1/css/imgareaselect-default.css">
+  <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
-    <div id="blur-content">
-        <script src="/asset/stackblur.min.js?1637397431"></script>
-        <div id="content" class="background-content" <div class="box-content">
-            <div>
-                <h1 class="title title-bg"
-                    style="background-image:url('https://data.imgtools.co/output/tool/preview/100x100/censor-image.png');">
-                    Blur or pixelate an image</h1>
-                <div id="DIV_1">
-                    <span id="SPAN_2"></span>
-                    <h2 id="H2_3">
-                        Drag &amp; drop images or connect with:
-                    </h2>
-                    <h2 id="H2_4">
-                        Select images
-                    </h2>
-                    <div id="DIV_5">
-
-                        <button id="BUTTON_6">
-                            Sign in with Google
-                        </button>
-                        <button id="BUTTON_7">
-                            Dropbox
-                        </button>
-                    </div>
-                    <button id="BUTTON_8">
-                        Browse
-                    </button>
-                    <input type="file" id="INPUT_9"
-                        accept="image/gif,image/png,image/jpg,image/jpeg,image/svg+xml,image/webp,image/tiff,image/psd,.psd" />
-                </div>
-                <div id="iu-controls">
-                    <div id="censor-controls">
-                        <label id="censor-effect-label" for="censor-effect-input">Effect: <select
-                                id="censor-effect-input" class="select">
-                                <option value="blur">Blur</option>
-                                <option value="pixelate">Pixelate</option>
-                                <option value="solid-color">Color</option>
-                                <option value="restore">Restore</option>
-                            </select>
-                        </label>
-                        <label id="censor-blur-radius-label" for="censor-blur-radius-input">
-                            Radius: <input type="range" id="censor-blur-radius-input" min="0" max="100" value="50"
-                                step="1">
-                        </label>
-                        <label id="censor-pixelate-size-label" for="censor-pixelate-size-input">
-                            Size: <input type="range" id="censor-pixelate-size-input" min="0" max="100" value="50"
-                                step="1">
-                        </label>
-                        <label id="censor-solid-color-label" for="censor-solid-color-input">
-                            <input type="color" id="censor-solid-color-input" value="#000000">
-                        </label>
-                    </div>
-                    <input type="text" id="censor-debug-input" style="width:100%; display:none;" />
-                    <div id="censor-canvas-box">
-                        <div class="canvas-container">
-                            <canvas id="censor-image-canvas"></canvas>
-                            <canvas id="censor-draw-canvas"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <!-- hero section starts -->
+  <section class="hero">
+    <div class="hero-container pb-6">
+      <p class="hero-text">Pixlate and Blur Images</p>
+      <!-- icons container starts-->
+      <div class="icon-container is-flex">
+        <div class="image-upload item">
+          <label for="file-input">
+            <i class="fa fa-upload"></i>
+          </label>
+          <input type="file" id="file-input" style="display:none;">
         </div>
-        <script src="/asset/tool/censor-image.min.js?1639209169"></script>
+        <div class="auto-preview-checkbox item">
+          <input type="checkbox" id="auto-preview-btn" name="auto-preview-btn">
+          <label for="auto-preview-btn">Auto Preview</label>
+        </div>
+        <button id="imagePNG" class="item download-btn">PNG</button>
+        <button id="imageJPG" class="item download-btn">JPEG</button>
+      </div>
+      <!-- icons container ends -->
+      <!-- effects Container starts -->
+      <div class="effects-container is-flex">
+        <label for="pixelate-btn">Effect:
+          <button id="pixelate-btn" class="button is-primary is-normal">Pixelate</button>
+        </label>
+        <label for="block-size-slider">Size:
+          <input type="range" min="1" max="100" value="10" onchange="pixelate()" id="block-size-slider">
+        </label>
+      </div>
+      <!-- effects container ends -->
+      <!-- canvas container starts -->
+      <div class="canvas-container is-flex is-justify-content-center">
+        <canvas id="image-canvas"></canvas>
+      </div>
+      <!-- canvas container ends -->
     </div>
-    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-messaging.js"></script>
-    </div>
+  </section>
+  <!-- hero section ends -->
+  <script src="./script.js"></script>
 </body>
 
 </html>
