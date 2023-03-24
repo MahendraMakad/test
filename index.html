@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+    <title>Online blur or pixelate an area on an image - ImgTools</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div id="blur-content">
+        <script src="/asset/stackblur.min.js?1637397431"></script>
+        <div id="content" class="background-content" <div class="box-content">
+            <div>
+                <h1 class="title title-bg"
+                    style="background-image:url('https://data.imgtools.co/output/tool/preview/100x100/censor-image.png');">
+                    Blur or pixelate an image</h1>
+                <div id="DIV_1">
+                    <span id="SPAN_2"></span>
+                    <h2 id="H2_3">
+                        Drag &amp; drop images or connect with:
+                    </h2>
+                    <h2 id="H2_4">
+                        Select images
+                    </h2>
+                    <div id="DIV_5">
+
+                        <button id="BUTTON_6">
+                            Sign in with Google
+                        </button>
+                        <button id="BUTTON_7">
+                            Dropbox
+                        </button>
+                    </div>
+                    <button id="BUTTON_8">
+                        Browse
+                    </button>
+                    <input type="file" id="INPUT_9"
+                        accept="image/gif,image/png,image/jpg,image/jpeg,image/svg+xml,image/webp,image/tiff,image/psd,.psd" />
+                </div>
+                <div id="iu-controls">
+                    <div id="censor-controls">
+                        <label id="censor-effect-label" for="censor-effect-input">Effect: <select
+                                id="censor-effect-input" class="select">
+                                <option value="blur">Blur</option>
+                                <option value="pixelate">Pixelate</option>
+                                <option value="solid-color">Color</option>
+                                <option value="restore">Restore</option>
+                            </select>
+                        </label>
+                        <label id="censor-blur-radius-label" for="censor-blur-radius-input">
+                            Radius: <input type="range" id="censor-blur-radius-input" min="0" max="100" value="50"
+                                step="1">
+                        </label>
+                        <label id="censor-pixelate-size-label" for="censor-pixelate-size-input">
+                            Size: <input type="range" id="censor-pixelate-size-input" min="0" max="100" value="50"
+                                step="1">
+                        </label>
+                        <label id="censor-solid-color-label" for="censor-solid-color-input">
+                            <input type="color" id="censor-solid-color-input" value="#000000">
+                        </label>
+                    </div>
+                    <input type="text" id="censor-debug-input" style="width:100%; display:none;" />
+                    <div id="censor-canvas-box">
+                        <div class="canvas-container">
+                            <canvas id="censor-image-canvas"></canvas>
+                            <canvas id="censor-draw-canvas"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/asset/tool/censor-image.min.js?1639209169"></script>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-messaging.js"></script>
+    </div>
+</body>
+
+</html>
