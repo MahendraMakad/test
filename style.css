@@ -87,4 +87,12 @@ i {
   padding-bottom: 0.5rem;
 }
 
+/* download buttons */ 
+#imagePNG {
+  cursor: pointer;
+}
+#imageJPG {
+  cursor: pointer;
+}
+
 
