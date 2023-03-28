@@ -3,6 +3,7 @@ const fileInput = document.querySelector('#file-input');
 // global variable to preserve original image data
 var originalData;
 var selectedEffect = 'blur';
+var originalWidth, originalHeight;
 // global varibles for selected coordinates of image using imgareaselect
 var x1, y1, x2, y2, width, height;
 // selecting the image canvas
@@ -45,6 +46,8 @@ $('#file-input').change(function () {
     image.src = event.target.result;
     image.onload = function () {
       let width, height;
+      originalHeight = image.height;
+      originalWidth = image.width;
       if (image.width > image.height) {
         const widthRatio = 900 / image.width;
         width = 900;
@@ -148,24 +151,54 @@ function blur() {
 
 
 //add eventListner to JPG download button
+// // add event listener to button
+// document.getElementById("imageJPG").addEventListener("click", function () {
+
+//   if (canvas.height && canvas.width) {
+//     // get the canvas data as a JPG image
+//     let imageData = canvas.toDataURL("image/jpeg");
+
+//     // create a link element and set its download attribute
+//     const link = document.createElement("a");
+//     link.download = "image.jpg";
+
+//     // set the href attribute to the canvas data
+//     link.href = imageData;
+
+//     // add the link to the document and simulate a click
+//     document.body.appendChild(link);
+//     link.click();
+//     document.body.removeChild(link);
+//   }
+// });
+
+
+//add eventListner to JPG download button
 // add event listener to button
 document.getElementById("imageJPG").addEventListener("click", function () {
 
   if (canvas.height && canvas.width) {
-    // get the canvas data as a JPG image
-    let imageData = canvas.toDataURL("image/jpeg");
+    // create a new canvas element with the original aspect ratio of the uploaded image
+    const downloadCanvas = document.createElement('canvas');
+    downloadWidth = originalWidth;
+    downloadHeight = originalHeight;
+    downloadCanvas.width = originalWidth;
+    downloadCanvas.height = originalHeight;
 
-    // create a link element and set its download attribute
-    const link = document.createElement("a");
-    link.download = "image.jpg";
+    // draw the uploaded image onto the new canvas, using the original width and height of the image
+    const downloadCtx = downloadCanvas.getContext('2d');
+    downloadCtx.drawImage(canvas, 0, 0, canvas.width, canvas.height, 0, 0, downloadWidth, downloadHeight);
 
-    // set the href attribute to the canvas data
-    link.href = imageData;
+    // get the base64-encoded data URL of the resized image
+    const dataURL = downloadCanvas.toDataURL('image/jpeg', 0.8);
 
-    // add the link to the document and simulate a click
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    // create a link element with the download attribute set to the desired filename and the href attribute set to the data URL of the resized image
+    const downloadLink = document.createElement('a');
+    downloadLink.download = 'image.jpg';
+    downloadLink.href = dataURL;
+
+    // simulate a click on the link element to initiate the download
+    downloadLink.click();
   }
 });
 
@@ -175,18 +208,26 @@ document.getElementById("imageJPG").addEventListener("click", function () {
 document.getElementById("imagePNG").addEventListener("click", function () {
   // get the canvas data as a JPG image
   if (canvas.height && canvas.width) {
-    let imageData = canvas.toDataURL("image/png");
+    // create a new canvas element with the original aspect ratio of the uploaded image
+    const downloadCanvas = document.createElement('canvas');
+    downloadWidth = originalWidth;
+    downloadHeight = originalHeight;
+    downloadCanvas.width = originalWidth;
+    downloadCanvas.height = originalHeight;
 
-    // create a link element and set its download attribute
-    const link = document.createElement("a");
-    link.download = "image.png";
+    // draw the uploaded image onto the new canvas, using the original width and height of the image
+    const downloadCtx = downloadCanvas.getContext('2d');
+    downloadCtx.drawImage(canvas, 0, 0, canvas.width, canvas.height, 0, 0, downloadWidth, downloadHeight);
 
-    // set the href attribute to the canvas data
-    link.href = imageData;
+    // get the base64-encoded data URL of the resized image
+    const dataURL = downloadCanvas.toDataURL('image/png', 0.8);
 
-    // add the link to the document and simulate a click
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    // create a link element with the download attribute set to the desired filename and the href attribute set to the data URL of the resized image
+    const downloadLink = document.createElement('a');
+    downloadLink.download = 'image.png';
+    downloadLink.href = dataURL;
+
+    // simulate a click on the link element to initiate the download
+    downloadLink.click();
   }
 });
