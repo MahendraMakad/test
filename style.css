@@ -16,6 +16,17 @@ body {
 @import url(//fonts.googleapis.com/css?family=Lato:300:400);
 
 
+.imgareaselect-selection {
+    background-color: rgba(0,0,0,.2);
+    overflow: hidden;
+    cursor: move;
+}
+
+.imgareaselect-border4,.imgareaselect-border2,.imgareaselect-border3
+,.imgareaselect-border1 {
+  border: 1px solid black !important;
+}
+
 .hero {
   padding: 1rem 2rem;
   z-index: 3;
